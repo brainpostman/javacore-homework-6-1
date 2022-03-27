@@ -65,8 +65,14 @@ public class PhoneBook {
     }
 
     public void deleteContactFromGroup(String number, String groupName) {
+        if (!groups.containsKey(groupName)) {
+            System.out.println("Данной группы не существует\n");
+            return;
+        }
         if (!groups.get(groupName).remove(contacts.get(number))) {
             System.out.println("Данный контакт не значится в этой группе.\n");
+        } else {
+            System.out.println("Контакт успешно удалён.");
         }
     }
 }
